@@ -6,13 +6,13 @@
  */
 import React, { useState } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
   TextInput,
-  Alert
+  Alert,
 } from 'react-native';
+import './global.css';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -27,16 +27,17 @@ function App() {
   return (
     <>
       <SafeAreaProvider>
-        <SafeAreaView style={styles.container}>
-          <View >
-            <Text >Welcome to ReactNative!</Text>
-            <Text >
-              {' '}
-              Login to get Destroyed By Us!!!
+        <SafeAreaView className='flex-1 bg-white'>
+          <View className="flex-1 items-center justify-center bg-white">
+            <Text className="text-2xl font-bold text-blue-600">
+              NativeWind is working!
             </Text>
-            <Text >Email Address</Text>
+          </View>
+          <View>
+            <Text>Welcome to ReactNative!</Text>
+            <Text> Login to get Destroyed By Us!!!</Text>
+            <Text>Email Address</Text>
             <TextInput
-              
               placeholder="example@gmail.com"
               placeholderTextColor=""
               value="email"
@@ -45,9 +46,8 @@ function App() {
               autoCapitalize="none"
             />
 
-            <Text >Password</Text>
+            <Text>Password</Text>
             <TextInput
-              
               placeholder=""
               placeholderTextColor=""
               value="password"
@@ -55,8 +55,8 @@ function App() {
               secureTextEntry={true}
             />
 
-            <TouchableOpacity  onPress={handleLogin}>
-              <Text >Sign In</Text>
+            <TouchableOpacity onPress={handleLogin}>
+              <Text>Sign In</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
@@ -67,9 +67,3 @@ function App() {
 
 export default App;
 
-const styles = StyleSheet.create({
-  container:{
-    backgroundColor: 'white',
-    flex: 1
-  }
-});
