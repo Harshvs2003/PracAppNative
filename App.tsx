@@ -4,42 +4,72 @@
  *
  * @format
  */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import React, { useState } from 'react';
 import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Alert
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    Alert.alert(`Logging in with: \nEmail: ${email}\nPassword: ${password}`);
+  };
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <View >
+            <Text >Welcome to ReactNative!</Text>
+            <Text >
+              {' '}
+              Login to get Destroyed By Us!!!
+            </Text>
+            <Text >Email Address</Text>
+            <TextInput
+              
+              placeholder="example@gmail.com"
+              placeholderTextColor=""
+              value="email"
+              onChangeText={text => setEmail(text)}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+
+            <Text >Password</Text>
+            <TextInput
+              
+              placeholder=""
+              placeholderTextColor=""
+              value="password"
+              onChangeText={text => setPassword(text)}
+              secureTextEntry={true}
+            />
+
+            <TouchableOpacity  onPress={handleLogin}>
+              <Text >Sign In</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
+
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor: 'white',
+    flex: 1
+  }
+});
